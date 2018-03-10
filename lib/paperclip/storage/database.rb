@@ -78,7 +78,7 @@ module Paperclip
           end
         end
 
-        ActiveRecord::Base.logger.info("[paperclip] Database Storage Initalized.")
+        ApplicationRecord.logger.info("[paperclip] Database Storage Initalized.")
       end
 
       def setup_paperclip_files_association
@@ -191,6 +191,7 @@ module Paperclip
             when 3
               paperclip_file = instance.send(@paperclip_files_association_name).send(:find_or_create_by_style, style.to_s)
             when 4
+            when 5
               paperclip_file = instance.send(@paperclip_files_association_name).send(:find_or_create_by, style: style.to_s)
             else
               raise "ActiveModel version #{ActiveModel::VERSION::STRING} is not supported (yet)"
